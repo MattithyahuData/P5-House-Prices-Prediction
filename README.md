@@ -4,6 +4,8 @@
 * Built a stakeholder facing visual deployment of model to predict churn of new customers 
 * Deployed Model in Power BI for Business Intelligence analysis 
 
+-- Deploy model in Heroku ...... 
+
 [Use Deployed Model](https://p7-diabetes-model.herokuapp.com/)
 
 ## Table of Contents 
