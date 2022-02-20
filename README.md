@@ -3,11 +3,11 @@
 * Used XGBoost regressor model for predictions 
 
 ## Table of Contents 
-[Resources](#resources)
-[Data Collection](#DataCollection)
-[Data Pre-processing](#DataPre-processing)
-[Data Warehousing](#DataWarehousing)
-[Exploratory data analysis](#EDA)
+[Resources](#resources)<br>
+[Data Collection](#DataCollection)<br>
+[Data Pre-processing](#DataPre-processing)<br>
+[Data Warehousing](#DataWarehousing)<br>
+[Exploratory data analysis](#EDA)<br>
 <!-- *   [Data Visualisation & Analytics](#Dataviz)
 *   [Business Intelligence](#Busintelli) -->
 *   [Feature Engineering](#FeatEng)
