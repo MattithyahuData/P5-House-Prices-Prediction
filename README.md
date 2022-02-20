@@ -1,4 +1,4 @@
-# 🏪 Mega Mart Sales Prediction: Project Overview
+# 🏡 House Price Prediction: Project Overview
 * End to end project predicting the price of a house using housing attributes like rooms and bathrooms etc.
 * Used XGBoost regressor model for predictions 
 
@@ -10,17 +10,17 @@
 [Exploratory data analysis](#EDA)<br>
 <!-- *   [Data Visualisation & Analytics](#Dataviz)
 *   [Business Intelligence](#Busintelli) -->
-*   [Feature Engineering](#FeatEng)
-*   [ML/DL Model Building](#ModelBuild)
+[Feature Engineering](#FeatEng)<br>
+[ML/DL Model Building](#ModelBuild)<br>
 <!-- *   [Model performance](#ModelPerf)
 *   [Model Optimisation](#ModelOpt) -->
-*   [Model Evaluation](#ModelEval)
+[Model Evaluation](#ModelEval)<br>
 <!-- *   [Model Productionisation](#ModelProd)
 *   [Deployment](#ModelDeploy) -->
-*   [Project Management (Agile | Scrum)](#Prjmanage)
-*   [Project Evaluation](#PrjEval)
-*   [Looking Ahead](#Lookahead)
-*   [Questions | Contact me ](#Lookahead)
+[Project Management (Agile | Scrum)](#Prjmanage)<br>
+[Project Evaluation](#PrjEval)<br>
+[Looking Ahead](#Lookahead)<br>
+[Questions | Contact me ](#Lookahead)<br>
 
 <a name="Resources"></a>  
 
@@ -28,42 +28,50 @@
 **Python 3, PostgreSQL** 
 
 [**Anaconda Packages:**](requirements.txt) **pandas, numpy, pandas_profiling, ipywidgets, sklearn, xgboost, matplotlib, seaborn, sqlalchemy, kaggle** 
-
+Powershell command for installing anaconda packages used for this project  
+```powershell
+pip install pandas numpy pandas_profiling ipywidgets sklearn xgboost matplotlib seaborn sqlalchemy kaggle psycopg2 ipykernel
+```
 <a name="DataCollection"></a>  
 
-## [Data Collection](Code/P7_Code.ipynb)
+## [Data Collection](Code/P5_Code.ipynb)
 Powershell command for data import using kaggle API <br>
 ```powershell
-!kaggle datasets download -d mrmorj/big-mart-sales -p ..\Data --unzip 
+!kaggle datasets download -d shree1992/housedata -p ..\Data --unzip 
 ```
-[Data source link](https://www.kaggle.com/mrmorj/big-mart-sales)
-[Data](Data/train_v9rqX0R.csv)
-*  Rows: 8523 | Columns: 12
-    *   Item_Identifier              
-    *   Item_Weight                  
-    *   Item_Fat_Content              
-    *   Item_Visibility             
-    *   Item_Type                     
-    *   Item_MRP                    
-    *   Outlet_Identifier            
-    *   Outlet_Establishment_Year     
-    *   Outlet_Size                  
-    *   Outlet_Location_Type         
-    *   Outlet_Type                   
-    *   Item_Outlet_Sales           
+[Data source link](https://www.kaggle.com/shree1992/housedata)
+[Data](Data/data.csv)
+*  Rows: 4600 | Columns: 18
+    *  date           
+    *  price          
+    *  bedrooms       
+    *  bathrooms      
+    *  sqft_living    
+    *  sqft_lot       
+    *  floors         
+    *  waterfront     
+    *  view           
+    *  condition      
+    *  sqft_above     
+    *  sqft_basement  
+    *  yr_built       
+    *  yr_renovated   
+    *  street         
+    *  city           
+    *  statezip       
+    *  country        
+          
                      
 
 <a name="DataPre-processing"></a>  
 
-## [Data Pre-processing](Code/P7_Code.ipynb)
-After I had all the data I needed, I needed to check it was ready for exploration and later modelling. I made the following changes:   
-*   General NULL and data validity checks  
-*   NULL values present in Item_Weight and Outlet_Size. 
-*   Mean and Mode imputation used to fill NULL values respectively.
+## [Data Pre-processing](Code/P5_Code.ipynb)
+After I had all the data I needed, I needed to check it was ready for exploration and later modelling.   
+*   Standard NULL and data validity checks in to ensure data is reliable and compatible for the model.  
 
 <a name="DataWarehousing"></a>
 
-## [Data Warehousing](Code/P7_Code.ipynb)
+## [Data Warehousing](Code/P5_Code.ipynb)
 I warehouse all data in a Postgre database for later use and reference.
 
 *   ETL in python to PostgreSQL Database.
@@ -73,7 +81,7 @@ I warehouse all data in a Postgre database for later use and reference.
 
 ## [Exploratory data analysis](Code/P7_Code.ipynb) 
 I looked at the distributions of the data and the value counts for the various categorical variables that would be fed into the model. Below are a few highlights from the analysis.
-
+* We can see that most houses in the data have between 2 - 5 rooms. 
 <img src="images/categoricalfeatures_countdistrib.png" />
 <img src="images/categoricalfeatures_distrib.png" />
 
@@ -101,13 +109,12 @@ On Page 2 of the interactive dashboard, I have provided the stake holders with t
 <a name="FeatEng"></a>  
 
 ## [Feature Engineering](Code/P2_Code.ipynb) 
-Here I fixed multiple instance issues for instances that should be the same instance. 
+Here I used OneHotEncoding to turn all features into numeric features as the XGBRegressor can only take numeric inputs. 
 ```python
-# Replacing data with duplicate instance names
-data.replace({'item_fat_content': {'low fat':'Low Fat','LF':'Low Fat', 'reg':'Regular'}}, inplace=True)
+# One Hot encoding for remaining categorical field 
+data = pd.get_dummies(data, drop_first = False)
 ```
-I used label encoder to encode the categorical variable(s) into numeric values for compatibility with the ML model. I also split the data into train and tests sets with a test size of 20%.
-*   Label encoder encoding to encode values
+I also split the data into train and tests sets with a test size of 20%.
 
 <a name="ModelBuild"></a> 
 
@@ -143,7 +150,7 @@ Using the best parameters, I improved the model accuracy by **1%**
 <a name="ModelEval"></a> 
 
 ## [Model Evaluation](Code/P4_Code.ipynb)
-*   I used the r2_score to see the error associated with the model. But because it is a regression use case I can’t give an accuracy score. 
+*   I used the r2_score to see the error associated with the model. But because it is a regression use case, I can’t give an accuracy score. 
 An R-Squared value above 0.7 would generally be seen as showing a high level of correlation. The model achieved a R2 value of 0.546.
 A value of 0.5 means that half of the variance in the outcome variable is explained by the model.
 
@@ -179,13 +186,12 @@ I built a flask REST API endpoint that was hosted on a local webserver before AW
     *   The review and process of a regression use case 
 *   EBI 
     *   Better project management and planning would have made this project faster
-    *   Explore use of other models 
+    *   Deployment of project like this could be very beneficial to many 
 
 <a name="Lookahead"></a> 
 
 ## Looking Ahead
-*   How can I predict quarter and year on year returns? 
-*   Help model accuracy by using better data 
+*   How can I predict the price of any place of residence, caravan, apartment, flat, room and house - With data on all these places can I create one quantifiable model to accurately predict the prices of all potential residences? 
 
 <a name="Questions"></a> 
 
@@ -195,3 +201,5 @@ For questions, feedback, and contribution requests contact me
 * ### [See more projects here](https://github.com/MattithyahuData?tab=repositories)
 
  
+
+
