@@ -8,15 +8,9 @@
 [Data Pre-processing](#DataPre-processing)<br>
 [Data Warehousing](#DataWarehousing)<br>
 [Exploratory data analysis](#EDA)<br>
-<!-- *   [Data Visualisation & Analytics](#Dataviz)
-*   [Business Intelligence](#Busintelli) -->
 [Feature Engineering](#FeatEng)<br>
 [ML/DL Model Building](#ModelBuild)<br>
-<!-- *   [Model performance](#ModelPerf)
-*   [Model Optimisation](#ModelOpt) -->
 [Model Evaluation](#ModelEval)<br>
-<!-- *   [Model Productionisation](#ModelProd)
-*   [Deployment](#ModelDeploy) -->
 [Project Management (Agile | Scrum)](#Prjmanage)<br>
 [Project Evaluation](#PrjEval)<br>
 [Looking Ahead](#Lookahead)<br>
@@ -27,7 +21,7 @@
 ## Resources Used
 **Python 3, PostgreSQL** 
 
-[**Anaconda Packages:**](requirements.txt) **pandas, numpy, pandas_profiling, ipywidgets, sklearn, xgboost, matplotlib, seaborn, sqlalchemy, kaggle** 
+[**Anaconda Packages:**](requirements.txt) **pandas, numpy, pandas_profiling, ipywidgets, sklearn, xgboost, matplotlib, seaborn, sqlalchemy, kaggle** <br>
 Powershell command for installing anaconda packages used for this project  
 ```powershell
 pip install pandas numpy pandas_profiling ipywidgets sklearn xgboost matplotlib seaborn sqlalchemy kaggle psycopg2 ipykernel
@@ -151,7 +145,7 @@ Using the best parameters, I improved the model accuracy by **1%**
 
 ## [Model Evaluation](Code/P4_Code.ipynb)
 *   I used the r2_score to see the error associated with the model. But because it is a regression use case, I can’t give an accuracy score. 
-An R-Squared value above 0.7 would generally be seen as showing a high level of correlation. The model achieved a R2 value of 0.546.
+An R-Squared value above 0.7 would generally be seen as showing a high level of correlation. The model achieved a R2 value of 0.688.
 A value of 0.5 means that half of the variance in the outcome variable is explained by the model.
 
 *   Plotting the actual and predicted values for botht the training and test sets shows how accracy and linear correlation decreases in the test data. 
