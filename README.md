@@ -1,15 +1,13 @@
 # 🏪 Mega Mart Sales Prediction: Project Overview
-* End to end project predicting the sales of a supermarket.
+* End to end project predicting the price of a house using housing attributes like rooms and bathrooms etc.
 * Used XGBoost regressor model for predictions 
 
--- Deploy model in Heroku ---- ????
-
 ## Table of Contents 
-*   [Resources](#resources)
-*   [Data Collection](#DataCollection)
-*   [Data Pre-processing](#DataPre-processing)
-*   [Data Warehousing](#DataWarehousing)
-*   [Exploratory data analysis](#EDA)
+[Resources](#resources)
+[Data Collection](#DataCollection)
+[Data Pre-processing](#DataPre-processing)
+[Data Warehousing](#DataWarehousing)
+[Exploratory data analysis](#EDA)
 <!-- *   [Data Visualisation & Analytics](#Dataviz)
 *   [Business Intelligence](#Busintelli) -->
 *   [Feature Engineering](#FeatEng)
