@@ -16,7 +16,7 @@
 [Looking Ahead](#Lookahead)<br>
 [Questions | Contact me ](#Lookahead)<br>
 
-<a name="Resources"></a>  
+<a name="resources"></a>  
 
 ## Resources Used
 **Python 3, PostgreSQL** 
